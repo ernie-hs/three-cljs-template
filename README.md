@@ -1,28 +1,9 @@
-# {{name}}
+# threejs cljs template
 
-## Run
+run from emacs using cider
 
-``` shell
-yarn install
+```M-x cider-jack-in-cljs```
 
-yarn watch
-```
+site is on http://localhost:8700
 
-## Clean
-
-``` shell
-yarn clean
-```
-
-## Release
-
-``` shell
-yarn release
-```
-
-## License
-
-Copyright © 2017 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+off you go...
