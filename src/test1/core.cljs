@@ -19,8 +19,7 @@
 (def camera (t/PerspectiveCamera. 45 (get-aspect-ratio) 0.1 1000))
 (def scene (t/Scene.))
 
-(.setSize renderer (let [d (get-window-dims)]
-                     (:width d) (:height d)))
+(let [d (get-window-dims)] (.setSize renderer (:width d) (:height d)))
 
 (set! (.-z (.-position camera)) 5)
 
