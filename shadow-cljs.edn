@@ -16,7 +16,7 @@
         :modules
         {:main
          {:init-fn test1.core/init}}
-
+        
         :compiler-options {:infer-externs true}
         
         :devtools
