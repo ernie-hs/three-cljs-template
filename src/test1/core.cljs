@@ -37,10 +37,13 @@
 
 ;; do something
 
-(def geometry (t/BoxGeometry. 1 1 1))
-(def material (t/MeshBasicMaterial. (js-obj "color" 0x00ff00)))
-(def box (t/Mesh. geometry material))
+(def light (t/PointLight. 0xffffff 100000))
+(.set (.-position light) 10 100 10)
+(.add scene light)
 
+(def geometry (t/BoxGeometry. 1 1 1))
+(def material (t/MeshPhysicalMaterial. (js-obj "color" 0x00ff00)))
+(def box (t/Mesh. geometry material))
 (.add scene box)
 
 (defn animation
