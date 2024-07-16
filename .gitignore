@@ -132,6 +132,7 @@ dist
 # emacs
 *~
 \#*\#
+.#*
 
 # shadow-cljs
 .shadow-cljs/

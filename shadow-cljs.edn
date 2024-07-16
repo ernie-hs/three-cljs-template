@@ -15,7 +15,9 @@
 
         :modules
         {:main
-         {:entries [test1.core]}}
+         {:init-fn test1.core/init}}
+
+        :compiler-options {:infer-externs true}
         
         :devtools
         ;; before live-reloading any code call this function
