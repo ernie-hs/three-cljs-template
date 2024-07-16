@@ -19,9 +19,21 @@
 (def camera (t/PerspectiveCamera. 45 (get-aspect-ratio) 0.1 1000))
 (def scene (t/Scene.))
 
-(let [d (get-window-dims)] (.setSize renderer (:width d) (:height d)))
+(.setPixelRatio renderer (.-devicePixelRatio js/window))
 
 (set! (.-z (.-position camera)) 5)
+
+;; handlers
+
+(defn on-resize []
+  (let [d (get-window-dims)]
+    (.setSize renderer (:width d) (:height d))
+    (set! (.-aspect camera) (/ (:width d) (:height d)))
+    (.updateProjectionMatrix camera)))
+
+(.addEventListener js/window "resize" on-resize)
+
+(on-resize)
 
 ;; do something
 
