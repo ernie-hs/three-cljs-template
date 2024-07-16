@@ -4,29 +4,26 @@
 
 (defn get-window-dims
  "get the dimensions of js/window"
- []
- {:width (.-innerWidth js/window) :height (.-innerHeight js/window)})
-
-(defn get-aspect-ratio
-  "get the aspect ratio of js/window"
   []
-  (let [dims (get-window-dims)]
-    (/ (:width dims) (:height dims))))
+  (let [width (.-innerWidth js/window)
+        height (.-innerHeight js/window)]
+    {:width width :height height :aspect (/ width height)}))
 
-(defn on-resize-builder [renderer camera]
+(defn on-resize-window-builder [renderer camera control]
   (fn []
     (let [d (get-window-dims)]
       (.setPixelRatio renderer (.-devicePixelRatio js/window))
       (.setSize renderer (:width d) (:height d))
-      (set! (.-aspect camera) (/ (:width d) (:height d)))
-      (.updateProjectionMatrix camera))))
+      (set! (.-aspect camera) (:aspect d))
+      (.updateProjectionMatrix camera)
+      (.update control))))
 
 ;; globals
 
 (def canvas (.querySelector js/document "#grid"))
 (def renderer (t/WebGLRenderer. (js-obj "canvas" canvas) "antialias" true))
 (set! (.-enabled (.-shadowMap renderer)) true)
-(def camera (t/PerspectiveCamera. 45 (get-aspect-ratio) 0.1 1000))
+(def camera (t/PerspectiveCamera. 45 1.3 0.1 1000))
 (def scene (t/Scene.))
 (def control (ArcballControls. camera canvas scene))
 
@@ -36,7 +33,7 @@
 
 ;; handlers
 
-(.addEventListener js/window "resize" (on-resize-builder renderer camera))
+(.addEventListener js/window "resize" (on-resize-window-builder renderer camera control))
 
 ;; do something
 
