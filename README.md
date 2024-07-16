@@ -11,3 +11,9 @@ when prompted choose, ```shadow``` then ```:app```
 site is on http://localhost:8700
 
 off you go...
+
+or, if you want to run it from npm
+
+```npm run watch```
+
+splendid...
