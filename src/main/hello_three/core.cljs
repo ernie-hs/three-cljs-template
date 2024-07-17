@@ -1,6 +1,7 @@
-(ns test1.core
+(ns hello-three.core
   (:require [three :as t]
-            ["three/addons/controls/ArcballControls.js" :refer [ArcballControls]]))
+            ["three/addons/controls/ArcballControls.js" :refer [ArcballControls]]
+            [hello-three.utils :as u]))
 
 (defn get-window-dims
  "get the dimensions of js/window"

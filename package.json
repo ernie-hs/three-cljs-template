@@ -1,13 +1,14 @@
 {
   "scripts": {
-    "deps": "yarn install",
-    "watch": "shadow-cljs watch app;",
-    "release": "shadow-cljs release app;",
-    "server": "shadow-cljs server;",
-    "clean": "rm -rf target; rm -rf public/js/compiled"
+      "deps": "yarn install",
+      "browser-test": "shadow-cljs watch browser-test",
+      "watch": "shadow-cljs watch app;",
+      "release": "shadow-cljs release app;",
+      "server": "shadow-cljs server;",
+      "clean": "rm -rf target; rm -rf public/js/compiled"
   },
-  "dependencies": {
-    "shadow-cljs": "^2.0.80",
-    "three": "^0.166.1"
-  }
+    "dependencies": {
+	"shadow-cljs": "^2.0.80",
+	"three": "^0.166.1"
+    }
 }
