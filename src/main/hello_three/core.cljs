@@ -22,7 +22,8 @@
 ;; globals
 
 (def canvas (.querySelector js/document "#grid"))
-(def renderer (t/WebGLRenderer. (js-obj "canvas" canvas) "antialias" true))
+(def renderer (t/WebGLRenderer. (js-obj "canvas" canvas
+                                        "antialias" true)))
 (set! (.-enabled (.-shadowMap renderer)) true)
 (def camera (t/PerspectiveCamera. 45 1.3 0.1 1000))
 (def scene (t/Scene.))
